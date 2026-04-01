@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>Tab VPN</h1>
+
+  <section id="status-section">
+    <div id="tab-status" class="status inactive">Current tab: Direct</div>
+    <div id="proxied-count">0 tabs proxied</div>
+  </section>
+
+  <section>
+    <h2>Proxy Server</h2>
+    <div class="row">
+      <input type="text" id="proxy-host" placeholder="localhost">
+      <span>:</span>
+      <input type="number" id="proxy-port" placeholder="1080" min="1" max="65535">
+      <button id="save-proxy">Save</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Trigger Domains</h2>
+    <div class="row">
+      <input type="text" id="domain-input" placeholder="example.co.uk">
+      <button id="add-domain">Add</button>
+    </div>
+    <ul id="domain-list"></ul>
+  </section>
+
+  <section>
+    <button id="test-btn">Test Connection</button>
+    <div id="test-result"></div>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>

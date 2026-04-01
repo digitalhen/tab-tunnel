@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 320px;
+  padding: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  color: #1a1a2e;
+  background: #f8f9fa;
+}
+
+h1 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #16213e;
+}
+
+h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+section {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.status {
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.status.active {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.inactive {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+#proxied-count {
+  font-size: 12px;
+  color: #666;
+}
+
+.row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.row span {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  flex: 1;
+  min-width: 0;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+input[type="number"] {
+  width: 60px;
+  flex: none;
+}
+
+button {
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border: 1px solid #0060df;
+  background: #0060df;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+button:hover {
+  background: #003eaa;
+}
+
+#domain-list {
+  list-style: none;
+  margin-top: 6px;
+}
+
+#domain-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+
+#domain-list li button {
+  padding: 1px 6px;
+  font-size: 11px;
+  background: #dc3545;
+  border-color: #dc3545;
+}
+
+#domain-list li button:hover {
+  background: #a71d2a;
+}
+
+#test-btn {
+  width: 100%;
+  background: #28a745;
+  border-color: #28a745;
+}
+
+#test-btn:hover {
+  background: #1e7e34;
+}
+
+#test-result {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #333;
+  word-break: break-all;
+}

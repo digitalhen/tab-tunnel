@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Tab VPN",
+  "version": "1.0.0",
+  "description": "Route specific tabs through a SOCKS5 proxy based on URL patterns",
+  "permissions": [
+    "proxy",
+    "webNavigation",
+    "tabs",
+    "storage",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "incognito": "spanning"
+}

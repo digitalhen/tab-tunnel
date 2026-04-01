@@ -1,0 +1,32 @@
+services:
+  nordvpn-uk:
+    image: ghcr.io/bubuntux/nordlynx
+    container_name: nordvpn-uk-proxy
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PRIVATE_KEY=${NORDLYNX_PRIVATE_KEY}
+      - QUERY=filters\[country_id\]=227
+      - NET_LOCAL=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12
+      - DNS=103.86.96.100,103.86.99.100
+    ports:
+      - "${SOCKS_PORT:-1080}:1080"
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "https://api.ipify.org"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  socks5:
+    image: vimagick/microsocks
+    container_name: uk-socks5
+    network_mode: "service:nordvpn-uk"
+    command: "-p 1080"
+    depends_on:
+      nordvpn-uk:
+        condition: service_healthy
+    restart: unless-stopped
