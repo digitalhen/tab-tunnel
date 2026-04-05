@@ -30,3 +30,29 @@ services:
       nordvpn-uk:
         condition: service_healthy
     restart: unless-stopped
+
+  firefox-uk:
+    image: lscr.io/linuxserver/firefox
+    container_name: firefox-uk
+    network_mode: "service:nordvpn-uk"
+    depends_on:
+      nordvpn-uk:
+        condition: service_healthy
+    shm_size: 1gb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    restart: unless-stopped
+
+  proxy-uk:
+    image: nginx:alpine
+    container_name: vpn-proxy-uk
+    ports:
+      - "8193:8193"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      nordvpn-uk:
+        condition: service_healthy
+    restart: unless-stopped
