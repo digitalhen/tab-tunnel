@@ -11,7 +11,7 @@ const testResult = document.getElementById("test-result");
 const proxyLink = document.getElementById("proxy-link");
 const githubLink = document.getElementById("github-link");
 
-const GITHUB_URL = "https://github.com/digitalhen/firefox-tab-vpn";
+const GITHUB_URL = "https://github.com/digitalhen/tab-tunnel";
 const PROXY_SETUP_URL = GITHUB_URL + "/tree/main/tab-vpn-proxy";
 
 let triggerDomains = [];

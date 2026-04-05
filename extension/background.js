@@ -1,4 +1,4 @@
-// Tab VPN - Background Script
+// Tab Tunnel - Background Script
 // Routes traffic from specific tabs through a SOCKS5 proxy based on trigger domains
 
 var proxiedTabs = new Set();
@@ -52,7 +52,7 @@ function updateIcon(tabId, active) {
   });
   browser.browserAction.setTitle({
     tabId,
-    title: active ? "Tab VPN: Active (proxied)" : "Tab VPN: Inactive",
+    title: active ? "Tab Tunnel: Active (proxied)" : "Tab Tunnel: Inactive",
   });
 }
 
@@ -111,7 +111,7 @@ browser.proxy.onRequest.addListener(
 
 // Log proxy errors
 browser.proxy.onError.addListener((error) => {
-  console.error("Tab VPN proxy error:", error.message);
+  console.error("Tab Tunnel proxy error:", error.message);
 });
 
 // On startup, check all existing tabs (handles extension reload / browser restart)
