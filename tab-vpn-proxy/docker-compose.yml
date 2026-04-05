@@ -10,8 +10,6 @@ services:
       - QUERY=filters\[country_id\]=227
       - NET_LOCAL=192.168.0.0/16,10.0.0.0/8,172.16.0.0/12
       - DNS=103.86.96.100,103.86.99.100
-    ports:
-      - "${SOCKS_PORT:-1080}:1080"
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=1
     restart: unless-stopped
@@ -50,6 +48,7 @@ services:
     container_name: vpn-proxy-uk
     ports:
       - "8193:8193"
+      - "1080:1080"
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:

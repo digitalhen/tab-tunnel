@@ -8,8 +8,26 @@ const tabStatus = document.getElementById("tab-status");
 const proxiedCount = document.getElementById("proxied-count");
 const testBtn = document.getElementById("test-btn");
 const testResult = document.getElementById("test-result");
+const proxyLink = document.getElementById("proxy-link");
+const githubLink = document.getElementById("github-link");
+
+const GITHUB_URL = "https://github.com/digitalhen/firefox-tab-vpn";
+const PROXY_SETUP_URL = GITHUB_URL + "/tree/main/tab-vpn-proxy";
 
 let triggerDomains = [];
+
+// External links (popup links need explicit handling)
+proxyLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  browser.tabs.create({ url: PROXY_SETUP_URL });
+  window.close();
+});
+
+githubLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  browser.tabs.create({ url: GITHUB_URL });
+  window.close();
+});
 
 // Load and display current settings
 async function init() {
@@ -28,14 +46,14 @@ async function init() {
   const bgPage = await browser.runtime.getBackgroundPage();
   const tabs = await browser.tabs.query({ active: true, currentWindow: true });
   if (tabs[0] && bgPage.proxiedTabs.has(tabs[0].id)) {
-    tabStatus.textContent = "Current tab: Proxied";
-    tabStatus.className = "status active";
+    tabStatus.textContent = "Proxied";
+    tabStatus.className = "badge active";
   } else {
-    tabStatus.textContent = "Current tab: Direct";
-    tabStatus.className = "status inactive";
+    tabStatus.textContent = "Direct";
+    tabStatus.className = "badge inactive";
   }
 
-  proxiedCount.textContent = `${bgPage.proxiedTabs.size} tab${bgPage.proxiedTabs.size !== 1 ? "s" : ""} proxied`;
+  proxiedCount.textContent = bgPage.proxiedTabs.size;
 }
 
 function renderDomains() {
